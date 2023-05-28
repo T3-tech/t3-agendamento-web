@@ -1,0 +1,41 @@
+*{
+  font-family: 'Inter';
+  font-style: italic;
+}
+
+body{
+  background-color: #F8E1DB;
+}
+
+.navbar{
+  background-color: #FE86B1;
+}
+
+.navbar-brand{
+  color: #ffffff;
+  font-size: 2em;
+}
+
+.navbar-brand:hover{
+  color: #FED3E0;
+}
+
+.btn{
+  background-color: #FE86B1;
+}
+
+.row{
+  margin-top: 20em;
+}
+
+.btn{
+  height: 4em;
+  width: 8em;
+  font-size: 2.1em;
+  border: none;
+}
+
+.btn:hover{
+  background-color: #FED3E0;
+}
+
