@@ -1,0 +1,32 @@
+* {
+    font-family: "Inter";
+    font-style: italic;
+}
+.header {
+    background-color: #fe86b1;
+}
+body {
+    background-color: #f8e1db;
+}
+.p-header {
+    font-size: 2em;
+}
+#servico-button {
+    background-color: #8edeaa;
+    font-size: 1.5em;
+}
+
+thead {
+    background-color: #fe86b1;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+}
+.table-wrapper-scroll-y {
+    display: block;
+}
