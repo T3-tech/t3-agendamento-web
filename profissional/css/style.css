@@ -1,0 +1,32 @@
+* {
+    font-family: "Inter";
+    font-style: italic;
+}
+body {
+    background-color: #f8e1db;
+}
+
+.header {
+    background-color: #fe86b1;
+}
+.p-header {
+    font-size: 2em;
+}
+#profissional-button {
+    background-color: #8edeaa;
+}
+
+thead {
+    background-color: #fe86b1;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+}
+.table-wrapper-scroll-y {
+    display: block;
+}
