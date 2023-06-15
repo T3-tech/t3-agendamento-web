@@ -13,7 +13,7 @@
     <div class="container-fluid d-flex justify-content-center header">
         <p class="text-white p-header">Profissionais</p>
     </div>
-
+    
     <div class="container text-center">
         <div class="row row-cols-2">
             <div class="col">
@@ -26,17 +26,14 @@
                 <div class="input-group flex-nowrap mt-5 container-lg">
                     <select class="form-select" id="select-servico">
                         <option selected>Selecione serviço</option>
-                        <option value="1">Manicure</option>
-                        <option value="2">Pedicure</option>
-                        <option value="3">Maquiagem</option>
                     </select>
                 </div>
             </div>
         </div>
     </div>
-
+  
     <div class="container-md mt-3 ps-4">
-        <button type="button" class="btn btn-outline-success"  id="profissional-button">Salvar</button>
+        <button  onclick="salvarProfissional" type="button" class="btn btn-outline-success"  id="profissional-button">Salvar</button>
     </div>
     
     <div class="container-md mt-5 p-3 table-wrapper-scroll-y my-custom-scrollbar div-tabela bg-white ">
@@ -82,6 +79,6 @@
         <a href="../index.html"><button type="button" class="btn btn-secondary">Voltar</button></a>
     </div>   
     
-    
+    <script src="js/script.js"></script>
 </body>
 </html>
