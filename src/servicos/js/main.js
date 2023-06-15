@@ -34,7 +34,7 @@ function listarServico() {
                 tableServico.innerHTML += `
                 <tr>
                 <th scope="row">${servico.nome}</th>
-                  <td><button class="btn btn-warning" id="editar" onclic="editarServico(${servico.id})"><i class="bi bi-pencil-square"></i></button></td>
+                  <td><button class="btn btn-warning" id="editar" onclick="editarServico(${servico.id})"><i class="bi bi-pencil-square"></i></button></td>
                   <td><button class="btn bg-danger" id="deletar" data-bs-toggle="modal" data-bs-target=#modalEdit onclick="deletarServico(${servico.id})" ><i class="bi bi-trash3-fill"></i></button></td>
               </tr>
 
