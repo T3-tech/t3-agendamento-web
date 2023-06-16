@@ -20,7 +20,7 @@
     <div class="input-group flex-nowrap mt-5 container-lg">
         <span class="input-group-text">Serviço:</span>
         <input type="text" class="form-control input-servico " placeholder="Nome do serviço" aria-label="Username" aria-describedby="addon-wrapping" id="servico">
-      </div>
+    </div>
     <div class="container-md mt-3">
         <button type="button" class="btn btn-outline-success"  id="servico-button">Salvar</button>
     </div>
@@ -44,9 +44,26 @@
     </div>
 
 
-    <div class="modal-dialog modal-dialog-centered" id="modalEdit">
-        ...
-    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="modalEdit">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Editar Serviço</h5>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group flex-nowrap container-lg">
+                    <span class="input-group-text">Serviço:</span>
+                    <input type="text" class="form-control input-servico " placeholder="Nome do serviço" aria-label="Username" aria-describedby="addon-wrapping" id="servicoEdit">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="saveEdit">Salvar Serviço </button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     
     <script src="./js/main.js"></script>
     <script src="./js/listaServico.js"></script>
