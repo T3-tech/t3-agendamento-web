@@ -52,8 +52,7 @@ function listarServico() {
                 <th scope="row">${servico.nome}</th>
                   <td><button class="btn btn-warning" id="editar" data-bs-toggle="modal" data-bs-target=#modalEdit onclick="editarServico(${servico.id})"><i class="bi bi-pencil-square"></i></button></td>
                   <td><button class="btn bg-danger" id="deletar"  onclick="deletarServico(${servico.id})" ><i class="bi bi-trash3-fill"></i></button></td>
-              </tr>
-
+                </tr>
                 `;
             });
         })

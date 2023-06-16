@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>T3 Agendamentos-Agenda</title>
-</head>
 <body>
     <div class="container-fluid d-flex justify-content-center header">
         <p class="text-white p-header">Agenda</p>
@@ -61,38 +62,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <!-- <tr>
                     <th scope="row">10/05/2023</th>
                         <td>Manicure</td>
                         <td>Profissional - 1</td>
                         <td>Cliente - 1</td>
                         <td><button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button></td>
                         <td><button class="btn bg-danger"><i class="bi bi-trash3-fill"></i></button></td>
-                </tr>
-                <tr>
-                    <th scope="row">10/05/2023</th>
-                    <td>Manicure</td>
-                    <td>Profissional - 1</td>
-                    <td>Cliente - 1</td>
-                    <td><button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button></td>
-                    <td><button class="btn bg-danger"><i class="bi bi-trash3-fill"></i></button></td>
-                </tr>
-                <tr>
-                    <th scope="row">10/05/2023</th>
-                    <td>Manicure</td>
-                    <td>Profissional - 1</td>
-                    <td>Cliente - 1</td>
-                    <td><button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button></td>
-                    <td><button class="btn bg-danger"><i class="bi bi-trash3-fill"></i></button></td>
-                </tr>
-                <tr>
-                    <th scope="row">10/05/2023</th>
-                    <td>Manicure</td>
-                    <td>Profissional - 1</td>
-                    <td>Cliente - 1</td>
-                    <td><button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button></td>
-                    <td><button class="btn bg-danger"><i class="bi bi-trash3-fill"></i></button></td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
     </div>
@@ -100,6 +77,51 @@
     <div class="container-md mt-5">
         <a href="../index.html"><button type="button" class="btn btn-secondary">Voltar</button></a>
     </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="modalEdit">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Editar Agenda</h5>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Nome:</span>
+                            <input type="text" class="form-control" placeholder="Nome do cliente" aria-label="Username" aria-describedby="addon-wrapping" id="nome-cliente-modal">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Data:</span>
+                            <input type="date" class="form-control" aria-label="Date" aria-describedby="addon-wrapping" id="data-agenda-modal">
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="row">
+                    <div class="col m-4">
+                        <select class="form-select" aria-label="Default select example" id="servico-modal">
+                            <option selected>Escolha um servico</option>
+                        </select>
+                    </div>
+                    <div class="col-5 mt-4">
+                        <select class="form-select" aria-label="Default select example" id="profissional-modal">
+                            <option selected>Escolha o Profissional</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="saveEdit">Salvar Agenda </button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <script src="./js/main.js"></script>
 

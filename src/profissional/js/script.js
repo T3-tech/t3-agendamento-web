@@ -4,6 +4,8 @@ const tableProfissional = document.getElementById("table-profissional");
 const closeModal = document.getElementById("closeModal");
 const modal = document.getElementById("modalEdit");
 const servicoEdit = document.getElementById("select-servico-edit");
+
+
 //fecha o modal
 closeModal.addEventListener("click", () => {
     modal.style.display = "none";

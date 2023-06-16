@@ -1,8 +1,20 @@
-const nomeCliente = document.getElementById("nomeCliente");
-const dataAgendamento = document.getElementById("data-agenda");
-const profissionais = document.getElementById("profissionais");
+const cliente = document.getElementById("nome-cliente");
+const data = document.getElementById("data-agenda");
+const id_profissional = document.getElementById("profissionais");
 const agendaButton = document.getElementById("agenda-button");
-const servicos = document.getElementById("servicos");
+const id_servico = document.getElementById("servicos");
+const tableAgenda = document.getElementById("table-agenda");
+const nomeClienteModal = document.getElementById("nome-cliente-modal");
+const dataAgendamentoModal = document.getElementById("data-agenda-modal");
+const profissionalModal = document.getElementById("profissional-modal");
+const servicoModal = document.getElementById("servico-modal");
+const closeModal = document.getElementById("closeModal");
+const modal = document.getElementById("modalEdit");
+
+closeModal.addEventListener("click", () => {
+    modal.style.display = "none";
+    location.reload();
+});
 
 function listarServico(elemt) {
     fetch("http://localhost:8000/servico")
@@ -38,39 +50,32 @@ function cadastrar() {
         },
         method: "POST",
         body: JSON.stringify({
-            nomeCliente: nomeCliente.value,
-            dataAgendamento: dataAgendamento.value,
-            servicos: servicos.value,
-            profissionais: profissionais.value,
+            data: data.value,
+            cliente: cliente.value,
+            id_profissional: id_profissional.value,
+            id_servico: id_servico.value,
         }),
     })
         .then((res) => console.log(res))
         .catch((error) => console.error("Error:", error));
+        location.reload();
 }
 
 function listar() {
-    fetch("http://localhost:8000/agenda", {
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-        method: "GET",
-    })
+    fetch("http://localhost:8000/agenda")
         .then((res) => res.json())
         .then((response) => {
-            let table = document.querySelector("table-agenda");
-
-            response.map((item) => {
-                let row = table.insertRow();
-                let cellNomeCliente = row.insertCell(0);
-                let cellDataAgendamento = row.insertCell(1);
-                let cellServicos = row.insertCell(2);
-                let cellProfissionais = row.insertCell(3);
-
-                cellNomeCliente.innerHTML = item.nomeCliente;
-                cellDataAgendamento.innerHTML = item.dataAgendamento;
-                cellServicos.innerHTML = item.servicos;
-                cellProfissionais.innerHTML = item.profissionais;
+            response.forEach((agenda) => {
+                tableAgenda.innerHTML += `
+                <tr>
+                    <th scope="row">${agenda.data}</th>
+                    <td>${agenda.nome_servico}</td>
+                    <td>${agenda.nome_profissional}</td>
+                    <td>${agenda.cliente}</td>
+                    <td><button class="btn btn-warning" id="editar" data-bs-toggle="modal" data-bs-target=#modalEdit onClick="alterar(${agenda.id})"><i class="bi bi-pencil-square"></i></button></td>
+                    <td><button class="btn bg-danger" id="deletar" onClick="deletar(${agenda.id})" ><i class="bi bi-trash3-fill"></i></button></td>
+                </tr>
+                `;
             });
         })
         .catch((error) => console.error("Error:", error));
@@ -85,25 +90,37 @@ function buscaPorId() {
         .catch((error) => console.error("Error:", error));
 }
 
-function alterar() {
-    fetch(`http://localhost:8000/agenda/${id}`, {
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-        method: "PUT",
-        body: JSON.stringify({
-            nomeCliente: nomeCliente.value,
-            dataAgendamento: dataAgendamento.value,
-            servicos: servicos.value,
-            profissionais: profissionais.value,
-        }),
-    })
-        .then((res) => console.log(res))
-        .catch((error) => console.error("Error:", error));
+function alterar(id) {
+    const saveEdit = document.getElementById("saveEdit");
+
+    saveEdit.addEventListener("click", () => {
+        if (
+            dataAgendamentoModal.value == "" ||
+            nomeClienteModal.value == "" ||
+            servicoModal.value == "" ||
+            profissionalModal.value == ""
+        ) { return alert("Todos os campos são obrigatórios.")}
+
+        fetch(`http://localhost:8000/agenda/${id}`, {
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            method: "PUT",
+            body: JSON.stringify({
+                data: dataAgendamentoModal.value,
+                cliente: nomeClienteModal.value,
+                id_profissional: profissionalModal.value,
+                id_servico: servicoModal.value,
+            }),
+        })
+            .then((res) => console.log(res))
+            .catch((error) => console.error("Error:", error));
+            location.reload(); 
+    });
 }
 
-function deletar() {
+function deletar(id) {
     fetch(`http://localhost:8000/agenda/${id}`, {
         headers: {
             Accept: "application/json",
@@ -113,6 +130,8 @@ function deletar() {
     })
         .then((res) => console.log(res))
         .catch((error) => console.error("Error:", error));
+
+    location.reload();
 }
 
 function limpar() {
@@ -124,10 +143,10 @@ function limpar() {
 
 agendaButton.addEventListener("click", () => {
     if (
-        nomeCliente.value == "" ||
-        dataAgendamento.value == "" ||
-        servicos.value == "" ||
-        profissionais.value == ""
+        data.value == "" ||
+        cliente.value == "" ||
+        id_servico.value == "" ||
+        id_profissional.value == ""
     ) {
         alert("Todos os campos são obrigatórios.");
     } else {
@@ -136,5 +155,9 @@ agendaButton.addEventListener("click", () => {
     }
 });
 
+listarServico(servicoModal);
+listarProfissional(profissionalModal);
+
 listarServico(servicos);
+listar();
 listarProfissional(profissionais);
